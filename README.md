@@ -65,7 +65,7 @@ key and project name. Using the `id`, `secret` and `project` values from the
 output above, create a file named `.env` with the following content
 
 ```shell
-TIGRIS_URI=api.preview.tigrisdata.cloud:443
+TIGRIS_URI=m1k.preview.tigrisdata.cloud
 TIGRIS_PROJECT=go_mongo_quickstart
 TIGRIS_CLIENT_ID=your_client_id
 TIGRIS_CLIENT_SECRET=your_client_secret
@@ -76,22 +76,20 @@ TIGRIS_CLIENT_SECRET=your_client_secret
 Run this quickstart application using the following command
 
 ```shell
-go run -tags=ferretdb_tigris main.go
+go run main.go
 ```
 
 You should see output similar to the following
 
 ```text
-Using Tigris with URI api.preview.tigrisdata.cloud:443
-Connecting to mongo with URI mongodb://127.0.0.1:17027/
 Connected.
-Inserted document into podcast collection: ObjectID("63f1c1d4bee828222112cad2")
+Inserted document into podcast collection: ObjectID("63f7e90863877e55d8e9ddf4")
 Inserted 2 documents into episode collection!
 Found 1 documents matching filter!
 [
     {
-        "ID": "63f1c1d4bee828222112cad4",
-        "Podcast": "63f1c1d4bee828222112cad2",
+        "ID": "63f7e90b63877e55d8e9ddf6",
+        "Podcast": "63f7e90863877e55d8e9ddf4",
         "Title": "Progressive Web Application Development",
         "Description": "Learn about PWA development with Tara Manicsic.",
         "Duration": 32
@@ -103,7 +101,7 @@ DeleteOne removed 1 document(s)
 
 ## Explore the data
 
-You can explore the data created by the quickstart application in Tigris
-Cloud Console
+You can explore the data created by the quickstart application in
+[Tigris Cloud Console](https://console.preview.tigrisdata.cloud/)
 
 ![Tigris Cloud Console screenshot](docs/assets/go_mongo_quickstart_wc.png)
