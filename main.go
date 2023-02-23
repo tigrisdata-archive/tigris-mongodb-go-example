@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/FerretDB/FerretDB/ferretdb"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -35,7 +34,6 @@ func main() {
 	defer cancel()
 
 	mongoUri := fetchMongoUri(ctx)
-	fmt.Println("Connecting to mongo with URI " + mongoUri)
 
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(mongoUri))
 	if err != nil {
@@ -131,27 +129,5 @@ func fetchMongoUri(ctx context.Context) string {
 		log.Fatal("You must set the 'TIGRIS_URI', 'TIGRIS_CLIENT_ID', and 'TIGRIS_CLIENT_SECRET' environment variables.")
 	}
 
-	fmt.Println("Using Tigris with URI " + uri)
-
-	f, err := ferretdb.New(&ferretdb.Config{
-		Listener: ferretdb.ListenerConfig{
-			TCP: "127.0.0.1:17027",
-		},
-		Handler:            "tigris",
-		TigrisURL:          uri,
-		TigrisClientID:     clientId,
-		TigrisClientSecret: clientSecret,
-	})
-
-	if err != nil {
-		panic(err)
-	}
-
-	done := make(chan struct{})
-	go func() {
-		log.Print(f.Run(ctx))
-		close(done)
-	}()
-
-	return f.MongoDBURI()
+	return fmt.Sprintf("mongodb://%s:%s@%s/?authMechanism=PLAIN", clientId, clientSecret, uri)
 }
