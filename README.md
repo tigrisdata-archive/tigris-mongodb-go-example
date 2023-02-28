@@ -65,7 +65,7 @@ key and project name. Using the `id`, `secret` and `project` values from the
 output above, create a file named `.env` with the following content
 
 ```shell
-TIGRIS_URI=m1k.preview.tigrisdata.cloud
+TIGRIS_URI=m1k.preview.tigrisdata.cloud:27018
 TIGRIS_PROJECT=go_mongo_quickstart
 TIGRIS_CLIENT_ID=your_client_id
 TIGRIS_CLIENT_SECRET=your_client_secret

@@ -129,5 +129,5 @@ func fetchMongoUri(ctx context.Context) string {
 		log.Fatal("You must set the 'TIGRIS_URI', 'TIGRIS_CLIENT_ID', and 'TIGRIS_CLIENT_SECRET' environment variables.")
 	}
 
-	return fmt.Sprintf("mongodb://%s:%s@%s/?authMechanism=PLAIN", clientId, clientSecret, uri)
+	return fmt.Sprintf("mongodb://%s:%s@%s/?authMechanism=PLAIN&tls=true", clientId, clientSecret, uri)
 }
