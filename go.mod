@@ -1,4 +1,4 @@
-module go-mongo-quickstart
+module github.com/tigrisdata-community/go-mongo-quickstart
 
 go 1.19
 
